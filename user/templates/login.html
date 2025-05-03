@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+<form method="post">
+         {% csrf_token %}
+{{ form.errors }}
+    {{ form.non_field_errors }}
+
+{{ form.username }}
+    {% for error in form.username.errors %}
+        <p>{{ error }}</p>
+    {% endfor %}
+
+
+{{ form.password }}
+    {% for error in form.password.errors %}
+        <p>{{ error }}</p>
+    {% endfor %}
+        <input type="submit" value="Enter">
+</form>
+        <button type="button" class="btn btn-warning"><a href="{% url 'register' %}">sign in</a></button>
+        <button type="button" class="btn btn-info" ><a href="{% url 'login' %}">login</a></button>
+
+{% endblock %}

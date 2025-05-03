@@ -1,0 +1,42 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'index' %}">HOME</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register' %}">Registration</a>
+
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'product' %}">Flowers</a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        showroom: +38 (044) 498–29–26<br>
+        number: +38 (099) 868-87-57
+
+      </span>
+    </div>
+  </div>
+</nav>
+
+<img src="/static/images/flower.jpg" class="img-fluid" alt="Responsive image" style="width=940px;height=240px;" >
+{% endblock %}
+
+
+{% block js %}
+
+
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+
+<form method="post">
+         {% csrf_token %}
+
+
+
+    <div class="input-group mb-3">
+  <div class="input-group-text">
+    <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+  </div>
+        {{ form.username }}
+    {% for error in form.username.errors %}
+        <p>{{ error }}</p>
+    {% endfor %}
+</div>
+
+    <div class="input-group mb-3">
+  <div class="input-group-text">
+    <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
+  </div>
+    {{ form.age }}
+    {% for error in form.age.errors %}
+        <p>{{ error }}</p>
+    {% endfor %}
+</div>
+
+    <div class="input-group mb-3">
+  <div class="input-group-text">
+    <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
+  </div>
+ {{ form.email }}
+    {% for error in form.email.errors %}
+        <p>{{ error }}</p>
+    {% endfor %}
+</div>
+
+
+
+    <div class="input-group mb-3">
+  <div class="input-group-text">
+    <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
+  </div>
+{{ form.password1 }}
+    {% for error in form.password1.errors %}
+        <p>{{ error }}</p>
+    {% endfor %}
+</div>
+
+
+    <div class="input-group mb-3">
+  <div class="input-group-text">
+    <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
+  </div>
+{{ form.password2 }}
+    {% for error in form.password2.errors %}
+        <p>{{ error }}</p>
+    {% endfor %}
+</div>
+
+
+
+<br>
+
+        <input type="submit" value="Enter">
+</form>
+
+        <button type="button" class="btn btn-warning"><a href="{% url 'register' %}">sign in</a></button>
+        <button type="button" class="btn btn-info" ><a href="{% url 'login' %}">login</a></button>
+
+
+{% endblock %}
