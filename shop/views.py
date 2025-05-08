@@ -31,11 +31,7 @@ class ProductCreationView(CreateView):
 class ProductCatalog(ListView):
     template_name = "catalog.html"
     model = Product
-    slug_url_kwarg = 'prod_id'
-    slug_field = 'id'
 
-    def get_queryset(self):
-        return self.model.objects.prefetch_related('products').all()
 
 
 class OrderView(CreateView):
