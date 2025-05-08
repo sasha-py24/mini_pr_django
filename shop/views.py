@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
-from .models import Product, Categories
-from .forms import ProductCreationForm, CategoriesCreationForm
+from .models import Product, Categories, Order
+from .forms import ProductCreationForm, CategoriesCreationForm, OrderCreationForm
 
 
 from django.views.generic.base import TemplateView
@@ -15,7 +15,7 @@ from django.http import JsonResponse, HttpResponseRedirect
 import datetime
 
 
-class IndexView(TemplateView):
+class IndexView(ListView):
     template_name = 'index.html'
     model = Product
     context_object_name = 'products'  # == {'products': products}
@@ -28,9 +28,25 @@ class ProductCreationView(CreateView):
     success_url = '/'
 
 
+class ProductCatalog(ListView):
+    template_name = "catalog.html"
+    model = Product
+    slug_url_kwarg = 'prod_id'
+    slug_field = 'id'
+
+    def get_queryset(self):
+        return self.model.objects.prefetch_related('products').all()
 
 
-class DeleteProductView(DeleteView):
-    pass
+class OrderView(CreateView):
+    form_class = OrderCreationForm
+
+    def get_form_class(self):
+        product = Product.objects.get(pk=self.kwargs['product_id'])
+        kwargs = {
+            'product': product
+        }
+        return kwargs
+
 
 

@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 
+{% csrf_token %}
 
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -33,6 +34,23 @@
 </nav>
 
 <img src="/static/images/flower.jpg" class="img-fluid" alt="Responsive image" style="width=940px;height=240px;" >
+<p></p>
+
+
+
+<div class="card text-center">
+  <div class="card-header">
+    flowers
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Special title </h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="{% url 'catalog' %}" class="btn btn-primary">see products</a>
+  </div>
+  <div class="card-footer text-muted">
+    2 days ago
+  </div>
+</div>
 {% endblock %}
 
 

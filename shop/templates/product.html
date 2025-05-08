@@ -2,10 +2,9 @@
 {% load static %}
 {% block content %}
 
-{% endblock %}
+
 <form method="post">
          {% csrf_token %}
-
 {{ form.name }}
     {% for error in form.name.errors %}
         <p>{{ error }}</p>
@@ -24,7 +23,7 @@
         <input type="submit" value="Enter">
 </form>
         <button><a href="{% url 'index' %}">home</a></button>
-
+{% endblock %}
 {% block js %}
 
 {% endblock %}

@@ -1,5 +1,5 @@
-from django.forms import forms
-from .models import Product, Categories
+from django import forms
+from .models import Product, Categories,Order
 
 
 class ProductCreationForm(forms.ModelForm):
@@ -12,6 +12,7 @@ class ProductCreationForm(forms.ModelForm):
         if price < 0 or price > 10000:
             raise forms.ValidationError('price must be between 0 and 10000')
         return price
+
 
 
 class CategoriesCreationForm(forms.ModelForm):
@@ -31,3 +32,17 @@ class CategoriesCreationForm(forms.ModelForm):
         if amount < 0 or amount > 25:
             raise forms.ValidationError('amount must be between 0 and 25')
         return amount
+
+
+
+
+class OrderCreationForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ['price']
+
+    def clean_price(self):
+        price = self.cleaned_data['price']
+        if price < 0 or price > 10000:
+            raise forms.ValidationError('price must be between 0 and 10000')
+        return price
