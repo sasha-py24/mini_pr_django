@@ -31,6 +31,7 @@ class ProductCreationView(CreateView):
 class ProductCatalog(ListView):
     template_name = "catalog.html"
     model = Product
+    context_object_name = 'products'
 
 
 
