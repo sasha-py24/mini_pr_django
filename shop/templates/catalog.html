@@ -34,17 +34,39 @@
 
 
 <div class="row row-cols-1 row-cols-md-2 g-4">
+{% for product in products %}
   <div class="col">
-    {% for product in products %}
     <div class="card">
       <div class="card-body">
-         <h2 class="card-title">{{ prod.name }}</h2>
-          <h3 class="card-text">{{ prod.price }}$</h3>
-            <a href="#" class="btn btn-primary">Order</a>
+         <h2 class="card-title">{{ product.name }}</h2>
+          <h3 class="card-text">{{ product.price }}$</h3>
+        <button data-id="{{ product.id }}" data-bs-toggle="modal" data-bs-target="#itemOrderModal" class="OrderView">Order</button>
+
       </div>
-      {% endfor %}
+    </div>
+{% endfor %}
+</div>
+
+
+<div class="modal fade" id="itemOrderModal" tabindex="-1" aria-labelledby="itemOrderModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="itemOrderModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="itemOrderModalBody">
+        {{ form }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button id="save_order" type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
   </div>
+</div>
+
+
 
 
 {% endblock %}

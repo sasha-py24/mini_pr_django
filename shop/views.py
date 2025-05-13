@@ -7,7 +7,7 @@ from .forms import ProductCreationForm, CategoriesCreationForm, OrderCreationFor
 
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormMixin
 from django.views.generic.detail import DetailView
 
 
@@ -28,10 +28,11 @@ class ProductCreationView(CreateView):
     success_url = '/'
 
 
-class ProductCatalog(ListView):
+class ProductCatalog(FormMixin, ListView):
     template_name = "catalog.html"
     model = Product
     context_object_name = 'products'
+    form_class = OrderCreationForm
 
 
 

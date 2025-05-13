@@ -39,10 +39,16 @@ class CategoriesCreationForm(forms.ModelForm):
 class OrderCreationForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ['price']
+        fields = ['price', 'name']
 
     def clean_price(self):
         price = self.cleaned_data['price']
         if price < 0 or price > 10000:
             raise forms.ValidationError('price must be between 0 and 10000')
         return price
+
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        if len(name) > 20 or len(name) < 0:
+            raise forms.ValidationError('name must be 20')
+        return name
