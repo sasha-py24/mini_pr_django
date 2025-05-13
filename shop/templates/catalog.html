@@ -41,8 +41,8 @@
          <h2 class="card-title">{{ product.name }}</h2>
           <h3 class="card-text">{{ product.price }}$</h3>
         <button data-id="{{ product.id }}" data-bs-toggle="modal" data-bs-target="#itemOrderModal" class="OrderView">Order</button>
-
       </div>
+    </div>
     </div>
 {% endfor %}
 </div>
@@ -55,18 +55,21 @@
         <h1 class="modal-title fs-5" id="itemOrderModalLabel">Modal title</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body" id="itemOrderModalBody">
-        {{ form }}
-      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button id="save_order" type="button" class="btn btn-primary">Save changes</button>
+        <button id="save_order" type="button" class="btn btn-primary">Confirm order</button>
       </div>
     </div>
   </div>
 </div>
 
 
+<script>
+    $('.OrderView').click(function (){
+        let btn = $(this);
+        $('#save_order').data('order-url', btn.data('order-url'));
+    });
+</script>
 
 
 {% endblock %}

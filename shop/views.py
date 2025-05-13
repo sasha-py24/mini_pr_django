@@ -35,16 +35,18 @@ class ProductCatalog(FormMixin, ListView):
     form_class = OrderCreationForm
 
 
-
 class OrderView(CreateView):
     form_class = OrderCreationForm
 
-    def get_form_class(self):
-        product = Product.objects.get(pk=self.kwargs['product_id'])
-        kwargs = {
-            'product': product
-        }
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['product'] = Product.objects.get(pk=self.kwargs['pk'])
         return kwargs
 
+    def form_invalid(self, form):
+        return JsonResponse({}, status=400)
 
+    def form_valid(self, form):
+        self.object = form.save()
+        return JsonResponse({})
 

@@ -15,17 +15,7 @@
         <p>{{ error }}</p>
     {% endfor %}
 
-
-{{ form.description }}
-    {% for error in form.description.errors %}
-        <p>{{ error }}</p>
-    {% endfor %}
-        <input type="submit" value="Enter">
 </form>
-{% endblock %}
-
-
-
 {% block js %}
 <script src="{% static 'js/order.js' %}"></script>
 
