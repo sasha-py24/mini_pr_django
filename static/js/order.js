@@ -1,4 +1,3 @@
-
 $('#save_order').click(function (){
     let btn = $(this);
     $.ajax(btn.data('order-url'), {
@@ -19,3 +18,5 @@ $('#save_order').click(function (){
         }
     })
 });
+
+
